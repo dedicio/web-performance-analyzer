@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Web Performance Analyzer",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

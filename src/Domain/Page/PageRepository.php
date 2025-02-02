@@ -24,8 +24,8 @@ interface PageRepository
     public function save(Page $page): void;
 
     /**
-     * @param Page $page
+     * @param int $id
      * @return void
      */
-    public function delete(Page $page): void;
+    public function delete(int $id): void;
 }

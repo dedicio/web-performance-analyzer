@@ -10,6 +10,6 @@ return function (ContainerBuilder $containerBuilder) {
     $db = $this->get(PDO::class);
 
     $containerBuilder->addDefinitions([
-        PageRepository::class => \DI\autowire(MySqlPageRepository::class, [$db]),
+        PageRepository::class => \DI\autowire(MySqlPageRepository::class),
     ]);
 };

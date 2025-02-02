@@ -13,10 +13,10 @@ return function (ContainerBuilder $containerBuilder) {
                 'google_pagespeed_api_key' => getenv('GOOGLE_PAGESPEED_API_KEY'),
 
                 "db" => [
-                    "host" => "localhost",
-                    "dbname" => "slim3",
-                    "user" => "root",
-                    "pass" => "xxxxx"
+                    "host" => getenv("MARIADB_HOST"),
+                    "dbname" => getenv("MARIADB_DATABASE"),
+                    "user" => getenv("MARIADB_USER"),
+                    "pass" => getenv("MARIADB_PASSWORD"),
                 ],
             ]);
         }
