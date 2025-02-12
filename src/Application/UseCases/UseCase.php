@@ -6,25 +6,22 @@ namespace App\Application\UseCases;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-// use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use App\Domain\DomainException\DomainRecordNotFoundException;
 use App\Application\UseCases\UseCasePayload;
 
 abstract class UseCase {
-    // protected LoggerInterface $logger;
-
     protected Request $request;
 
     protected Response $response;
 
     protected array $args;
 
-    // public function __construct(LoggerInterface $logger)
-    // {
-    //     $this->logger = $logger;
-    // }
+    public function __construct()
+    {
+        
+    }
 
     /**
      * @throws HttpNotFoundException
@@ -45,8 +42,10 @@ abstract class UseCase {
 
     abstract protected function exec(): Response;
 
-        /**
+    /**
      * @param array|object|null $data
+     * @param int $statusCode
+     * @return Response
      */
     protected function respondWithData($data = null, int $statusCode = 200): Response
     {
@@ -55,6 +54,10 @@ abstract class UseCase {
         return $this->respond($payload);
     }
 
+    /**
+     * @param UseCasePayload $payload
+     * @return Response
+     */
     protected function respond(UseCasePayload $payload): Response
     {
         $json = json_encode($payload, JSON_PRETTY_PRINT);

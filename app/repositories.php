@@ -5,11 +5,12 @@ declare(strict_types=1);
 use App\Domain\Page\PageRepository;
 use App\Infrastructure\Persistence\Page\MySqlPageRepository;
 use DI\ContainerBuilder;
+use Psr\Container\ContainerInterface;
 
 return function (ContainerBuilder $containerBuilder) {
-    $db = $this->get(PDO::class);
-
     $containerBuilder->addDefinitions([
-        PageRepository::class => \DI\autowire(MySqlPageRepository::class),
+        PageRepository::class => function(ContainerInterface $c) {
+            return new MySqlPageRepository($c->get('db'));
+        }
     ]);
 };
