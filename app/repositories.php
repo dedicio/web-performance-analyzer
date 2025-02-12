@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 return function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
         PageRepository::class => function(ContainerInterface $c) {
-            return new MySqlPageRepository($c->get('db'));
+            return new MySqlPageRepository($c->get(PDO::class));
         }
     ]);
 };

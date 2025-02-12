@@ -7,6 +7,8 @@ services:
       - '9000:9000'
     volumes:
       - .:/var/www/wpa_app
+    env_file:
+      - .env
 
   nginx:
     container_name: wpa_nginx

@@ -14,9 +14,9 @@ return function (ContainerBuilder $containerBuilder) {
             $dbSettings = $settings->get('db');
 
             $host = $dbSettings['host'];
-            $dbname = $dbSettings['database'];
-            $username = $dbSettings['username'];
-            $password = $dbSettings['password'];
+            $dbname = $dbSettings['dbname'];
+            $username = $dbSettings['user'];
+            $password = $dbSettings['pass'];
             $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
 
             return new PDO($dsn, $username, $password);
